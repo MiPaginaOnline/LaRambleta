@@ -188,10 +188,10 @@
             z-index: 1002;
         }
 
-        /* Hero section */
+        /* Hero section - FILTRO MÁS BRILLANTE */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('interior.PNG') no-repeat center center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('interior.PNG') no-repeat center center/cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -209,7 +209,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.4) 100%);
+            background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.3) 100%);
         }
 
         .hero-content {
@@ -415,7 +415,7 @@
             border: none;
         }
 
-        /* Sección Horario */
+        /* Sección Horario - MEJORADO */
         .hours {
             position: relative;
         }
@@ -441,21 +441,36 @@
             z-index: 1;
         }
 
-        .day {
-            display: flex;
-            justify-content: space-between;
-            padding: 15px 0;
-            border-bottom: 1px solid #eee;
-            font-size: 1.1rem;
+        .hours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
         }
 
-        .day:last-child {
-            border-bottom: none;
+        .day-column {
+            text-align: center;
+        }
+
+        .day-header {
+            background: var(--section-bg);
+            color: white;
+            padding: 15px;
+            border-radius: 10px 10px 0 0;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .day-times {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 0 0 10px 10px;
+            border: 2px solid #f0f0f0;
         }
 
         .closed {
             color: var(--section-bg);
             font-weight: 700;
+            font-size: 1.1rem;
         }
 
         /* Sección Reservas */
@@ -558,7 +573,7 @@
             transform: scale(1.1);
         }
 
-        /* Sección Contacto */
+        /* Sección Contacto - CORREGIDA */
         .contact {
             position: relative;
         }
@@ -621,6 +636,11 @@
             color: var(--dark-color);
         }
 
+        .contact-text p {
+            color: #666;
+            line-height: 1.5;
+        }
+
         /* Sección Redes Sociales */
         .social {
             text-align: center;
@@ -666,11 +686,11 @@
             box-shadow: 0 15px 25px rgba(139, 30, 63, 0.3);
         }
 
-        /* Botón de llamada flotante */
+        /* Botón de llamada flotante - MOVIDO A LA DERECHA */
         .call-btn {
             position: fixed;
             bottom: 25px;
-            left: 25px;
+            right: 25px;
             width: 70px;
             height: 70px;
             background: linear-gradient(to right, #25D366, #128C7E);
@@ -819,6 +839,18 @@
             section {
                 padding: 80px 20px;
             }
+
+            .hours-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .call-btn {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+                bottom: 20px;
+                right: 20px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -840,14 +872,6 @@
             
             .logo {
                 font-size: 1.6rem;
-            }
-            
-            .call-btn {
-                width: 60px;
-                height: 60px;
-                font-size: 1.5rem;
-                bottom: 20px;
-                left: 20px;
             }
         }
     </style>
@@ -990,37 +1014,39 @@
         </div>
     </section>
 
-    <!-- Sección Horario -->
+    <!-- Sección Horario - MEJORADA -->
     <section id="hours" class="hours section-white fade-in">
         <h2>Horario</h2>
         <div class="hours-container">
-            <div class="day">
-                <span>Lunes</span>
-                <span>13:00–16:00</span>
-            </div>
-            <div class="day">
-                <span>Martes</span>
-                <span class="closed">Cerrado</span>
-            </div>
-            <div class="day">
-                <span>Miércoles</span>
-                <span>13:00–16:00</span>
-            </div>
-            <div class="day">
-                <span>Jueves</span>
-                <span>13:00–16:00</span>
-            </div>
-            <div class="day">
-                <span>Viernes</span>
-                <span>13:00–16:00, 20:00–22:30</span>
-            </div>
-            <div class="day">
-                <span>Sábado</span>
-                <span>12:30–16:00, 20:00–22:30</span>
-            </div>
-            <div class="day">
-                <span>Domingo</span>
-                <span>12:30–16:00</span>
+            <div class="hours-grid">
+                <div class="day-column">
+                    <div class="day-header">Lunes</div>
+                    <div class="day-times">13:00–16:00</div>
+                </div>
+                <div class="day-column">
+                    <div class="day-header">Martes</div>
+                    <div class="day-times"><span class="closed">Cerrado</span></div>
+                </div>
+                <div class="day-column">
+                    <div class="day-header">Miércoles</div>
+                    <div class="day-times">13:00–16:00</div>
+                </div>
+                <div class="day-column">
+                    <div class="day-header">Jueves</div>
+                    <div class="day-times">13:00–16:00</div>
+                </div>
+                <div class="day-column">
+                    <div class="day-header">Viernes</div>
+                    <div class="day-times">13:00–16:00<br>20:00–22:30</div>
+                </div>
+                <div class="day-column">
+                    <div class="day-header">Sábado</div>
+                    <div class="day-times">12:30–16:00<br>20:00–22:30</div>
+                </div>
+                <div class="day-column">
+                    <div class="day-header">Domingo</div>
+                    <div class="day-times">12:30–16:00</div>
+                </div>
             </div>
         </div>
     </section>
@@ -1106,7 +1132,7 @@
         </div>
     </section>
 
-    <!-- Sección Contacto -->
+    <!-- Sección Contacto - CORREGIDA -->
     <section id="contact" class="contact section-colored fade-in">
         <h2>Contacto</h2>
         <div class="contact-container">
@@ -1126,7 +1152,7 @@
                     </div>
                     <div class="contact-text">
                         <h3>Dirección</h3>
-                        <p>Rbla. de Ponent, 8, local 3, 43006 Tarragona</p>
+                        <p>Rbla. de Ponent, 8, local 3<br>43006 Tarragona</p>
                     </div>
                 </div>
                 <div class="contact-item">
@@ -1152,7 +1178,7 @@
         </div>
     </section>
 
-    <!-- Botón de llamada flotante -->
+    <!-- Botón de llamada flotante - MOVIDO A LA DERECHA -->
     <a href="tel:+34672617312" class="call-btn">
         <i class="fas fa-phone"></i>
     </a>
