@@ -5,41 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurant La Rambleta | Cocina Mediterránea en Tarragona</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* Variables y estilos generales */
         :root {
-            --primary-color: #2C5530;
-            --secondary-color: #D4AF37;
-            --accent-color: #8B1E3F;
-            --dark-color: #1a1a1a;
-            --light-color: #f5f5f5;
-            --elegant-burgundy: #8B1E3F;
-            --section-bg: #8B1E3F;
-            --transition: all 0.3s ease;
-            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            --floating-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            --primary-color: #8B4513;
+            --secondary-color: #d4af37;
+            --accent-color: #c41e3a;
+            --dark-color: #121212;
+            --light-color: #f8f8f8;
+            --section-bg: #8B4513;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            --floating-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
+            --gold-gradient: linear-gradient(135deg, #d4af37, #f9e076, #d4af37);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: white;
+            color: #333;
+            line-height: 1.7;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(139, 69, 19, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
         }
 
         html {
             scroll-behavior: smooth;
         }
 
-        body {
-            background-color: white;
-            color: #333;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
         section {
-            padding: 100px 20px;
+            padding: 120px 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -47,18 +62,27 @@
         .section-colored {
             background-color: var(--section-bg);
             color: white;
+            position: relative;
+            overflow: hidden;
         }
 
         .section-white {
             background-color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
         }
 
         h2 {
-            font-size: 2.8rem;
-            margin-bottom: 40px;
+            font-size: 3.2rem;
+            margin-bottom: 50px;
             text-align: center;
             position: relative;
-            font-weight: 700;
+            font-weight: 800;
         }
 
         .section-colored h2 {
@@ -72,16 +96,16 @@
         h2::after {
             content: '';
             position: absolute;
-            bottom: -15px;
+            bottom: -20px;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            border-radius: 2px;
+            width: 120px;
+            height: 5px;
+            border-radius: 3px;
         }
 
         .section-colored h2::after {
-            background: linear-gradient(to right, var(--secondary-color), #FFD700);
+            background: var(--gold-gradient);
         }
 
         .section-white h2::after {
@@ -91,34 +115,35 @@
         /* Header flotante con efecto único */
         header {
             position: fixed;
-            top: 20px;
+            top: 25px;
             left: 50%;
             transform: translateX(-50%);
             width: 95%;
             max-width: 1100px;
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background-color: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             z-index: 1000;
             box-shadow: var(--floating-shadow);
             border-radius: 15px;
             transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.25);
         }
 
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 25px;
+            padding: 18px 30px;
         }
 
         .logo {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 800;
-            color: var(--primary-color);
+            color: var(--section-bg);
             display: flex;
             align-items: center;
+            font-family: 'Playfair Display', serif;
         }
 
         .logo span {
@@ -129,11 +154,11 @@
         .logo::before {
             content: '';
             display: inline-block;
-            width: 12px;
-            height: 12px;
-            background-color: var(--secondary-color);
+            width: 14px;
+            height: 14px;
+            background: var(--gold-gradient);
             border-radius: 50%;
-            margin-right: 10px;
+            margin-right: 12px;
         }
 
         /* Navegación */
@@ -143,7 +168,7 @@
         }
 
         nav ul li {
-            margin-left: 25px;
+            margin-left: 30px;
             position: relative;
         }
 
@@ -154,7 +179,8 @@
             transition: var(--transition);
             position: relative;
             font-size: 1.05rem;
-            padding: 5px 0;
+            padding: 8px 0;
+            letter-spacing: 0.5px;
         }
 
         nav ul li a:hover {
@@ -168,7 +194,7 @@
             left: 0;
             width: 0;
             height: 3px;
-            background: linear-gradient(to right, var(--secondary-color), #FFD700);
+            background: var(--gold-gradient);
             transition: var(--transition);
             border-radius: 2px;
         }
@@ -186,12 +212,19 @@
             background: none;
             border: none;
             z-index: 1002;
+            transition: var(--transition);
         }
 
-        /* Hero section - FILTRO MÁS BRILLANTE */
+        .menu-toggle:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Hero section - MEJORADO SIGNIFICATIVAMENTE */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('interior.PNG') no-repeat center center/cover;
+            background: 
+                linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 100%),
+                url('interior.PNG') no-repeat center center/cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -200,6 +233,7 @@
             color: white;
             padding: 0 20px;
             position: relative;
+            overflow: hidden;
         }
 
         .hero::before {
@@ -209,50 +243,68 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.3) 100%);
+            background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
         }
 
         .hero-content {
             position: relative;
             z-index: 1;
-            max-width: 800px;
+            max-width: 900px;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero h1 {
-            font-size: 4.5rem;
-            margin-bottom: 25px;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+            font-size: 5rem;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.7);
             font-weight: 800;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            line-height: 1.1;
         }
 
         .hero p {
-            font-size: 1.6rem;
-            margin-bottom: 40px;
+            font-size: 1.8rem;
+            margin-bottom: 50px;
             font-weight: 300;
             line-height: 1.8;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
         }
 
         .btn {
             display: inline-block;
-            padding: 15px 35px;
-            background: linear-gradient(to right, var(--secondary-color), #FFD700);
+            padding: 18px 40px;
+            background: var(--gold-gradient);
             color: var(--primary-color);
             text-decoration: none;
             border-radius: 50px;
-            font-weight: 600;
+            font-weight: 700;
             transition: var(--transition);
             border: none;
             cursor: pointer;
             font-size: 1.1rem;
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
             position: relative;
             overflow: hidden;
+            letter-spacing: 1px;
         }
 
         .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.4);
+            transform: translateY(-7px);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.5);
             color: var(--primary-color);
         }
 
@@ -263,8 +315,8 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: 0.5s;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: 0.6s;
         }
 
         .btn:hover::after {
@@ -283,7 +335,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" opacity="0.03"><path d="M0 0h100v100H0z" fill="%238B1E3F"/></svg>');
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" opacity="0.03"><path d="M0 0h100v100H0z" fill="%238B4513"/></svg>');
         }
 
         .about-content {
@@ -295,12 +347,25 @@
             max-width: 900px;
             margin: 0 auto;
             text-align: center;
-            font-size: 1.2rem;
-            line-height: 1.8;
+            font-size: 1.25rem;
+            line-height: 1.9;
         }
 
         .about-text p {
-            margin-bottom: 25px;
+            margin-bottom: 30px;
+            position: relative;
+            padding: 0 20px;
+        }
+
+        .about-text p:first-child::before {
+            content: '"';
+            font-size: 5rem;
+            color: var(--secondary-color);
+            position: absolute;
+            top: -30px;
+            left: -10px;
+            font-family: Georgia, serif;
+            opacity: 0.7;
         }
 
         /* Sección Menú */
@@ -321,15 +386,15 @@
         .menu-categories {
             display: flex;
             justify-content: center;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 20px;
             position: relative;
             z-index: 1;
         }
 
         .category-btn {
-            padding: 12px 25px;
+            padding: 15px 30px;
             background-color: transparent;
             border: 2px solid var(--section-bg);
             color: var(--section-bg);
@@ -338,26 +403,43 @@
             transition: var(--transition);
             font-weight: 600;
             box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+            transition: 0.5s;
         }
 
         .category-btn.active, .category-btn:hover {
             background: var(--section-bg);
             color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(139, 30, 63, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(139, 69, 19, 0.3);
+        }
+
+        .category-btn:hover::before {
+            left: 100%;
         }
 
         .menu-items {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 35px;
             position: relative;
             z-index: 1;
         }
 
         .menu-item {
             background-color: white;
-            padding: 25px;
+            padding: 30px;
             border-radius: 15px;
             box-shadow: var(--shadow);
             transition: var(--transition);
@@ -366,23 +448,41 @@
             border-left: 5px solid var(--section-bg);
         }
 
+        .menu-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--gold-gradient);
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: transform 0.4s ease;
+        }
+
+        .menu-item:hover::before {
+            transform: scaleY(1);
+        }
+
         .menu-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
 
         .menu-item h3 {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 15px;
+            margin-bottom: 18px;
             color: var(--section-bg);
-            font-size: 1.4rem;
+            font-size: 1.5rem;
+            position: relative;
         }
 
         .price {
             color: var(--secondary-color);
             font-weight: 700;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
         }
 
         /* Sección Ubicación */
@@ -397,16 +497,17 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" opacity="0.03"><path d="M0 0h100v100H0z" fill="%238B1E3F"/></svg>');
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" opacity="0.03"><path d="M0 0h100v100H0z" fill="%238B4513"/></svg>');
         }
 
         .map-container {
-            height: 450px;
+            height: 500px;
             border-radius: 15px;
             overflow: hidden;
             box-shadow: var(--shadow);
             position: relative;
             z-index: 1;
+            border: 8px solid white;
         }
 
         .map-container iframe {
@@ -415,7 +516,7 @@
             border: none;
         }
 
-        /* Sección Horario - MEJORADO */
+        /* Sección Horario - CARRUSEL */
         .hours {
             position: relative;
         }
@@ -431,46 +532,111 @@
         }
 
         .hours-container {
-            max-width: 700px;
+            max-width: 800px;
             margin: 0 auto;
             background-color: white;
-            padding: 40px;
-            border-radius: 15px;
+            padding: 50px;
+            border-radius: 20px;
             box-shadow: var(--shadow);
             position: relative;
             z-index: 1;
+            border: 1px solid rgba(0,0,0,0.05);
         }
 
-        .hours-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+        .hours-carousel {
+            position: relative;
+            overflow: hidden;
+            height: 200px;
+        }
+
+        .hours-track {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 100%;
         }
 
         .day-column {
+            min-width: 100%;
             text-align: center;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .day-header {
             background: var(--section-bg);
             color: white;
-            padding: 15px;
+            padding: 18px;
             border-radius: 10px 10px 0 0;
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 1.25rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .day-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+
+        .day-column:hover .day-header::before {
+            transform: translateX(100%);
         }
 
         .day-times {
             background: #f9f9f9;
-            padding: 20px;
+            padding: 25px;
             border-radius: 0 0 10px 10px;
             border: 2px solid #f0f0f0;
+            font-weight: 500;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .closed {
-            color: var(--section-bg);
+            color: var(--accent-color);
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--gold-gradient);
+            color: var(--primary-color);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            z-index: 10;
+        }
+
+        .carousel-btn:hover {
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .carousel-btn.prev {
+            left: 10px;
+        }
+
+        .carousel-btn.next {
+            right: 10px;
         }
 
         /* Sección Reservas */
@@ -485,47 +651,50 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" opacity="0.03"><path d="M0 0h100v100H0z" fill="%238B1E3F"/></svg>');
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" opacity="0.03"><path d="M0 0h100v100H0z" fill="%238B4513"/></svg>');
         }
 
         .reservation-form {
-            max-width: 700px;
+            max-width: 750px;
             margin: 0 auto;
             background-color: white;
-            padding: 40px;
-            border-radius: 15px;
+            padding: 50px;
+            border-radius: 20px;
             box-shadow: var(--shadow);
             position: relative;
             z-index: 1;
         }
 
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 30px;
+            position: relative;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             font-weight: 600;
             color: var(--dark-color);
+            font-size: 1.05rem;
         }
 
         .form-group input, .form-group textarea, .form-group select {
             width: 100%;
-            padding: 15px;
+            padding: 18px;
             border: 1px solid #ddd;
-            border-radius: 8px;
+            border-radius: 10px;
             font-size: 1rem;
             transition: var(--transition);
+            font-family: 'Montserrat', sans-serif;
         }
 
         .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
             border-color: var(--section-bg);
-            box-shadow: 0 0 0 3px rgba(139, 30, 63, 0.1);
+            box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.15);
             outline: none;
         }
 
-        /* Sección Galería */
+        /* Sección Galería - CARRUSEL AUTOMÁTICO */
         .gallery {
             position: relative;
         }
@@ -540,26 +709,43 @@
             background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" opacity="0.03"><path d="M0 0h100v100H0z" fill="%23FFFFFF"/></svg>');
         }
 
-        .gallery-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
+        .gallery-carousel {
             position: relative;
-            z-index: 1;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            height: 500px;
+        }
+
+        .gallery-track {
+            display: flex;
+            transition: transform 0.8s ease;
+            height: 100%;
         }
 
         .gallery-item {
+            min-width: 100%;
             border-radius: 15px;
             overflow: hidden;
-            height: 250px;
+            height: 100%;
             position: relative;
-            box-shadow: var(--shadow);
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.1) 100%);
+            z-index: 1;
+            opacity: 0;
             transition: var(--transition);
         }
 
-        .gallery-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        .gallery-item:hover::before {
+            opacity: 1;
         }
 
         .gallery-item img {
@@ -570,7 +756,7 @@
         }
 
         .gallery-item:hover img {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
 
         /* Sección Contacto - CORREGIDA */
@@ -585,13 +771,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" opacity="0.03"><path d="M0 0h100v100H0z" fill="%238B1E3F"/></svg>');
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" opacity="0.03"><path d="M0 0h100v100H0z" fill="%238B4513"/></svg>');
         }
 
         .contact-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 50px;
             position: relative;
             z-index: 1;
         }
@@ -599,46 +785,49 @@
         .contact-info {
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 30px;
         }
 
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 20px;
-            padding: 20px;
+            gap: 25px;
+            padding: 25px;
             background-color: white;
-            border-radius: 10px;
+            border-radius: 15px;
             transition: var(--transition);
             box-shadow: var(--shadow);
         }
 
         .contact-item:hover {
-            transform: translateX(10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transform: translateX(12px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
 
         .contact-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(to right, var(--section-bg), #a52c55);
+            width: 70px;
+            height: 70px;
+            background: var(--gold-gradient);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: white;
-            font-size: 1.5rem;
+            color: var(--primary-color);
+            font-size: 1.8rem;
             flex-shrink: 0;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
         }
 
         .contact-text h3 {
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             color: var(--dark-color);
+            font-size: 1.3rem;
         }
 
         .contact-text p {
             color: #666;
-            line-height: 1.5;
+            line-height: 1.6;
+            font-size: 1.05rem;
         }
 
         /* Sección Redes Sociales */
@@ -660,8 +849,8 @@
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 25px;
-            margin-top: 30px;
+            gap: 30px;
+            margin-top: 40px;
             position: relative;
             z-index: 1;
         }
@@ -670,37 +859,37 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(to right, var(--section-bg), #a52c55);
-            color: white;
+            width: 70px;
+            height: 70px;
+            background: var(--gold-gradient);
+            color: var(--primary-color);
             border-radius: 50%;
-            font-size: 1.8rem;
+            font-size: 2rem;
             transition: var(--transition);
             text-decoration: none;
             box-shadow: var(--shadow);
         }
 
         .social-link:hover {
-            transform: translateY(-10px) rotate(10deg);
-            box-shadow: 0 15px 25px rgba(139, 30, 63, 0.3);
+            transform: translateY(-12px) rotate(10deg);
+            box-shadow: 0 20px 30px rgba(212, 175, 55, 0.4);
         }
 
-        /* Botón de llamada flotante - MOVIDO A LA DERECHA */
+        /* Botón de llamada flotante - MEJORADO */
         .call-btn {
             position: fixed;
-            bottom: 25px;
-            right: 25px;
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(to right, #25D366, #128C7E);
+            bottom: 30px;
+            right: 30px;
+            width: 75px;
+            height: 75px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
             color: white;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 1.8rem;
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            font-size: 2rem;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.5);
             z-index: 999;
             transition: var(--transition);
             text-decoration: none;
@@ -708,8 +897,8 @@
         }
 
         .call-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
+            transform: scale(1.15);
+            box-shadow: 0 15px 35px rgba(37, 211, 102, 0.7);
             animation: none;
         }
 
@@ -718,7 +907,7 @@
                 box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
             }
             70% {
-                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+                box-shadow: 0 0 0 20px rgba(37, 211, 102, 0);
             }
             100% {
                 box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
@@ -727,22 +916,37 @@
 
         /* Footer */
         footer {
-            background: linear-gradient(to right, var(--section-bg), #6a1533);
+            background: linear-gradient(135deg, var(--section-bg), #6b3309);
             color: white;
-            padding: 60px 20px 30px;
+            padding: 80px 20px 40px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" opacity="0.03"><path d="M0 0h100v100H0z" fill="%23FFFFFF"/></svg>');
         }
 
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .footer-logo {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             font-weight: 800;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             color: white;
+            font-family: 'Playfair Display', serif;
         }
 
         .footer-logo span {
@@ -752,25 +956,25 @@
         .footer-logo::before {
             content: '';
             display: inline-block;
-            width: 15px;
-            height: 15px;
-            background-color: var(--secondary-color);
+            width: 18px;
+            height: 18px;
+            background: var(--gold-gradient);
             border-radius: 50%;
-            margin-right: 10px;
+            margin-right: 15px;
         }
 
         .copyright {
-            margin-top: 40px;
-            padding-top: 25px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            font-size: 0.95rem;
             opacity: 0.8;
         }
 
         /* Efectos de aparición */
         .fade-in {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(40px);
             transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
@@ -780,13 +984,19 @@
         }
 
         /* Media Queries para móviles */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 4.2rem;
+            }
+        }
+
         @media (max-width: 992px) {
             .hero h1 {
-                font-size: 3.5rem;
+                font-size: 3.8rem;
             }
             
             h2 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
             }
         }
 
@@ -810,10 +1020,11 @@
                 flex-direction: column;
                 align-items: center;
                 justify-content: flex-start;
-                padding-top: 100px;
+                padding-top: 120px;
                 transition: var(--transition);
                 box-shadow: var(--floating-shadow);
                 z-index: 1001;
+                border-radius: 0 20px 20px 0;
             }
 
             nav ul.active {
@@ -821,23 +1032,23 @@
             }
 
             nav ul li {
-                margin: 20px 0;
+                margin: 25px 0;
             }
 
             .hero h1 {
-                font-size: 2.8rem;
+                font-size: 3.2rem;
             }
 
             .hero p {
-                font-size: 1.3rem;
+                font-size: 1.5rem;
             }
 
             h2 {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
             }
             
             section {
-                padding: 80px 20px;
+                padding: 100px 20px;
             }
 
             .hours-grid {
@@ -845,33 +1056,51 @@
             }
 
             .call-btn {
-                width: 60px;
-                height: 60px;
-                font-size: 1.5rem;
-                bottom: 20px;
-                right: 20px;
+                width: 65px;
+                height: 65px;
+                font-size: 1.8rem;
+                bottom: 25px;
+                right: 25px;
+            }
+
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
             }
         }
 
         @media (max-width: 576px) {
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
             }
             
             .hero p {
-                font-size: 1.1rem;
+                font-size: 1.2rem;
             }
             
             h2 {
-                font-size: 1.8rem;
+                font-size: 2.2rem;
             }
             
             .header-container {
-                padding: 12px 20px;
+                padding: 15px 20px;
             }
             
             .logo {
-                font-size: 1.6rem;
+                font-size: 1.8rem;
+            }
+
+            .btn {
+                padding: 16px 35px;
+            }
+
+            .hours-container, .reservation-form {
+                padding: 30px 20px;
+            }
+
+            .gallery-carousel {
+                height: 300px;
             }
         }
     </style>
@@ -1014,38 +1243,19 @@
         </div>
     </section>
 
-    <!-- Sección Horario - MEJORADA -->
+    <!-- Sección Horario - CARRUSEL -->
     <section id="hours" class="hours section-white fade-in">
         <h2>Horario</h2>
         <div class="hours-container">
-            <div class="hours-grid">
-                <div class="day-column">
-                    <div class="day-header">Lunes</div>
-                    <div class="day-times">13:00–16:00</div>
-                </div>
-                <div class="day-column">
-                    <div class="day-header">Martes</div>
-                    <div class="day-times"><span class="closed">Cerrado</span></div>
-                </div>
-                <div class="day-column">
-                    <div class="day-header">Miércoles</div>
-                    <div class="day-times">13:00–16:00</div>
-                </div>
-                <div class="day-column">
-                    <div class="day-header">Jueves</div>
-                    <div class="day-times">13:00–16:00</div>
-                </div>
-                <div class="day-column">
-                    <div class="day-header">Viernes</div>
-                    <div class="day-times">13:00–16:00<br>20:00–22:30</div>
-                </div>
-                <div class="day-column">
-                    <div class="day-header">Sábado</div>
-                    <div class="day-times">12:30–16:00<br>20:00–22:30</div>
-                </div>
-                <div class="day-column">
-                    <div class="day-header">Domingo</div>
-                    <div class="day-times">12:30–16:00</div>
+            <div class="hours-carousel">
+                <button class="carousel-btn prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-btn next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <div class="hours-track" id="hoursTrack">
+                    <!-- Los días se cargarán dinámicamente con JavaScript -->
                 </div>
             </div>
         </div>
@@ -1107,27 +1317,29 @@
         </form>
     </section>
 
-    <!-- Sección Galería -->
+    <!-- Sección Galería - CARRUSEL AUTOMÁTICO -->
     <section id="gallery" class="gallery section-white fade-in">
         <h2>Galería</h2>
-        <div class="gallery-container">
-            <div class="gallery-item">
-                <img src="plato.PNG" alt="Plato del restaurante">
-            </div>
-            <div class="gallery-item">
-                <img src="plato 3.PNG" alt="Plato del restaurante">
-            </div>
-            <div class="gallery-item">
-                <img src="plato 2.PNG" alt="Plato del restaurante">
-            </div>
-            <div class="gallery-item">
-                <img src="plato 1.PNG" alt="Plato del restaurante">
-            </div>
-            <div class="gallery-item">
-                <img src="interior.PNG" alt="Interior del restaurante">
-            </div>
-            <div class="gallery-item">
-                <img src="interior 1.PNG" alt="Interior del restaurante">
+        <div class="gallery-carousel">
+            <div class="gallery-track" id="galleryTrack">
+                <div class="gallery-item">
+                    <img src="plato.PNG" alt="Plato del restaurante">
+                </div>
+                <div class="gallery-item">
+                    <img src="plato 3.PNG" alt="Plato del restaurante">
+                </div>
+                <div class="gallery-item">
+                    <img src="plato 2.PNG" alt="Plato del restaurante">
+                </div>
+                <div class="gallery-item">
+                    <img src="plato 1.PNG" alt="Plato del restaurante">
+                </div>
+                <div class="gallery-item">
+                    <img src="interior.PNG" alt="Interior del restaurante">
+                </div>
+                <div class="gallery-item">
+                    <img src="interior 1.PNG" alt="Interior del restaurante">
+                </div>
             </div>
         </div>
     </section>
@@ -1178,7 +1390,7 @@
         </div>
     </section>
 
-    <!-- Botón de llamada flotante - MOVIDO A LA DERECHA -->
+    <!-- Botón de llamada flotante - MEJORADO -->
     <a href="tel:+34672617312" class="call-btn">
         <i class="fas fa-phone"></i>
     </a>
@@ -1195,6 +1407,84 @@
     </footer>
 
     <script>
+        // Datos del horario
+        const horarios = [
+            { dia: "Lunes", horario: "13:00–16:00" },
+            { dia: "Martes", horario: "<span class='closed'>Cerrado</span>" },
+            { dia: "Miércoles", horario: "13:00–16:00" },
+            { dia: "Jueves", horario: "13:00–16:00" },
+            { dia: "Viernes", horario: "13:00–16:00<br>20:00–22:30" },
+            { dia: "Sábado", horario: "12:30–16:00<br>20:00–22:30" },
+            { dia: "Domingo", horario: "12:30–16:00" }
+        ];
+
+        // Obtener el día actual (0 = Domingo, 1 = Lunes, etc.)
+        const diaActual = new Date().getDay();
+        // Ajustar para que 0 = Lunes, 6 = Domingo
+        const diaIndex = diaActual === 0 ? 6 : diaActual - 1;
+
+        // Cargar los días en el carrusel de horarios
+        const hoursTrack = document.getElementById('hoursTrack');
+        horarios.forEach((horario, index) => {
+            const dayColumn = document.createElement('div');
+            dayColumn.className = 'day-column';
+            dayColumn.innerHTML = `
+                <div class="day-header">${horario.dia}</div>
+                <div class="day-times">${horario.horario}</div>
+            `;
+            hoursTrack.appendChild(dayColumn);
+        });
+
+        // Inicializar el carrusel de horarios
+        let currentDayIndex = diaIndex;
+        const totalDays = horarios.length;
+        
+        function updateHoursCarousel() {
+            hoursTrack.style.transform = `translateX(-${currentDayIndex * 100}%)`;
+        }
+
+        // Botones del carrusel de horarios
+        document.querySelector('.carousel-btn.prev').addEventListener('click', () => {
+            currentDayIndex = (currentDayIndex - 1 + totalDays) % totalDays;
+            updateHoursCarousel();
+        });
+
+        document.querySelector('.carousel-btn.next').addEventListener('click', () => {
+            currentDayIndex = (currentDayIndex + 1) % totalDays;
+            updateHoursCarousel();
+        });
+
+        // Inicializar el carrusel en el día actual
+        updateHoursCarousel();
+
+        // Carrusel automático de galería
+        const galleryTrack = document.getElementById('galleryTrack');
+        const galleryItems = galleryTrack.querySelectorAll('.gallery-item');
+        let currentGalleryIndex = 0;
+        const totalGalleryItems = galleryItems.length;
+
+        function updateGalleryCarousel() {
+            galleryTrack.style.transform = `translateX(-${currentGalleryIndex * 100}%)`;
+        }
+
+        // Función para avanzar automáticamente la galería
+        function autoAdvanceGallery() {
+            currentGalleryIndex = (currentGalleryIndex + 1) % totalGalleryItems;
+            updateGalleryCarousel();
+        }
+
+        // Iniciar el carrusel automático de la galería cada 3 segundos
+        let galleryInterval = setInterval(autoAdvanceGallery, 3000);
+
+        // Pausar el carrusel cuando el usuario interactúa con él
+        galleryTrack.addEventListener('mouseenter', () => {
+            clearInterval(galleryInterval);
+        });
+
+        galleryTrack.addEventListener('mouseleave', () => {
+            galleryInterval = setInterval(autoAdvanceGallery, 3000);
+        });
+
         // Menú hamburguesa para móviles - CORREGIDO
         document.querySelector('.menu-toggle').addEventListener('click', function() {
             document.querySelector('nav ul').classList.toggle('active');
@@ -1274,9 +1564,9 @@
             const header = document.querySelector('header');
             if (window.scrollY > 100) {
                 header.style.top = '10px';
-                header.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.2)';
+                header.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.25)';
             } else {
-                header.style.top = '20px';
+                header.style.top = '25px';
                 header.style.boxShadow = 'var(--floating-shadow)';
             }
         });
